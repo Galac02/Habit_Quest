@@ -20,7 +20,7 @@ export function AppSidebar() {
           <Link
             key={link.href}
             href={link.href}
-            className="rounded-lg px-3 py-2 hover:bg-neutral-100"
+            className="rounded-lg px-3 py-2 hover:border-white hover:ring-2"
           >
             {link.label}
           </Link>
