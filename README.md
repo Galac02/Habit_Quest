@@ -140,7 +140,7 @@ That means:
 
 * [x] Basic habit creation
 * [x] Database integration
-* [ ] Habit list view
+* [x] Habit list view
 * [ ] Completion logging
 * [ ] Streak system (basic)
 * [ ] Recurrence engine
