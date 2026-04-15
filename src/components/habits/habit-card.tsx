@@ -76,9 +76,9 @@ export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }
                 type="button"
                 onClick={() => handleMarkDone(habit.id)}
                 disabled={isCompleting || isInactive}
-                className={["relative flex h-12 w-32 items-center justify-center overflow-hidden rounded-lg border text-sm font-medium transition-all duration-500",
+                className={["cursor-pointer relative flex h-12 w-32 items-center justify-center overflow-hidden rounded-lg border text-sm font-medium transition-all",
                   isCompleting || isInactive
-                    ? "border-green-500 bg-green-500 text-white"
+                    ? "border-green-500 bg-green-500 text-white duration-500"
                     : "border-white text-white hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]",
                 ].join(" ")}
               >
