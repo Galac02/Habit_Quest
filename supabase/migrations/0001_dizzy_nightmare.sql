@@ -1,0 +1,1 @@
+ALTER TABLE "habit_rules" DROP COLUMN "rule_type";

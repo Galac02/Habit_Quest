@@ -25,14 +25,15 @@ export default async function HabitsPage() {
           <h2 className="text-2xl font-bold">Habits</h2>
           <p className="text-neutral-600">Your long-term habit system.</p>
         </div>
-        <Link href="/habits/new" className="rounded-lg border px-3 py-2 hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]">
+        <Link
+          href="/habits/new"
+          className="rounded-lg border px-3 py-2 hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]"
+        >
           New habit
         </Link>
       </div>
       {habits.length === 0 ? (
-        <div className="rounded-2xl border p-4">
-          No habits yet.
-        </div>
+        <div className="rounded-2xl border p-4">No habits yet.</div>
       ) : (
         <div>
           <HabitCard initialHabits={habits} />

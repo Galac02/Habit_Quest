@@ -28,7 +28,7 @@ export const habits = pgTable("habits", {
 export const habitRules = pgTable("habit_rules", {
   id: uuid("id").defaultRandom().primaryKey(),
   habitId: uuid("habit_id").notNull().references(() => habits.id),
-  ruleType: text("rule_type").notNull(), // daily | every_x_days | weekly | selected_weekdays | custom
+  //ruleType: text("rule_type").notNull(), // daily | every_x_days | weekly | selected_weekdays | custom
   intervalValue: integer("interval_value"),
   weekdays: jsonb("weekdays"),
   timesPerPeriod: integer("times_per_period").notNull().default(1),

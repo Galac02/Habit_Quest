@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { StreakBadge } from "./streak-badge";
 import { useState } from "react";
 import { Check } from "lucide-react";
@@ -9,9 +9,13 @@ interface HabitCardProps {
   description?: string | null;
   isActive: boolean;
   /*streak: number;*/
-};
+}
 
-export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }) {
+export function HabitCard({
+  initialHabits,
+}: {
+  initialHabits: HabitCardProps[];
+}) {
   const [completingId, setCompletingId] = useState<string | null>(null);
   const [habits, setHabits] = useState(initialHabits);
 
@@ -23,18 +27,20 @@ export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }
         method: "POST",
       });
 
-      {/*     if (res.ok) {
+      {
+        /*     if (res.ok) {
         console.log("Nice job!");
       }
-    */}
+    */
+      }
       if (!res.ok) {
         throw new Error("Failed to mark habit as done");
       }
 
       setHabits((prev) =>
         prev.map((habit) =>
-          habit.id === habitId ? { ...habit, isActive: false } : habit
-        )
+          habit.id === habitId ? { ...habit, isActive: false } : habit,
+        ),
       );
 
       // Optional: remove after animation delay
@@ -66,7 +72,7 @@ export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }
           >
             <div className="min-w-0 flex-1">
               <h2 className="text-lg font-semibold">{habit.title}</h2>
-              <p className="mt-1 max-w-[80%] text-sm text-neutral-400 break-words">
+              <p className="mt-1 max-w-[80%] text-sm text-neutral-400 wrap-break-word">
                 {habit.description ?? "No description"}
               </p>
             </div>
@@ -76,10 +82,11 @@ export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }
                 type="button"
                 onClick={() => handleMarkDone(habit.id)}
                 disabled={isCompleting || isInactive}
-                className={["cursor-pointer relative flex h-12 w-32 items-center justify-center overflow-hidden rounded-lg border text-sm font-medium transition-all",
+                className={[
+                  "cursor-pointer relative flex h-12 w-32 items-center justify-center overflow-hidden rounded-lg border text-sm font-medium transition-all",
                   isCompleting || isInactive
                     ? "border-green-500 bg-green-500 text-white duration-500"
-                    : "border-white text-white hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]",
+                    : "border-gray-500 text-white hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]",
                 ].join(" ")}
               >
                 <span
@@ -99,10 +106,10 @@ export function HabitCard({ initialHabits }: { initialHabits: HabitCardProps[] }
               </button>
             </div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 
   /*<div className="flex rounded-2xl border p-4 shadow-sm">
     <div className="flex-1">

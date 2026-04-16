@@ -31,7 +31,6 @@ export function HabitForm() {
         color: 0xa2a2a2,
         icon,
         rule: {
-          ruleType: "interval",
           timesPerPeriod,
           periodType,
           startDate: new Date().toISOString(),
@@ -144,41 +143,43 @@ export function HabitForm() {
             <label className="mb-1 block font-bold">Repeat</label>
 
             <div className="flex items-center gap-3">
-            <span className="text-sm">Every</span>
-            
-            <input
-              type="number"
-              min={1}
-              value={timesPerPeriod}
-              onChange={(e) => setTimesPerPeriod(Number(e.target.value))}
-              className="w-24 rounded-lg border px-3 py-2" />
-            
-            <select
-              value={periodType}
-              onChange={(e) => setPeriodType(e.target.value as PeriodType)}
-              className="rounded-lg border px-3 py-2">
-              
-              <option value="day" className="text-black">
-                {timesPerPeriod === 1 ? "day" : "days"}
-              </option>
-              <option value="week" className="text-black">
-                {timesPerPeriod === 1 ? "week" : "weeks"}
-              </option>
+              <span className="text-sm">Every</span>
+
+              <input
+                type="number"
+                min={1}
+                value={timesPerPeriod}
+                onChange={(e) => setTimesPerPeriod(Number(e.target.value))}
+                className="w-24 rounded-lg border px-3 py-2" />
+
+              <select
+                value={periodType}
+                onChange={(e) => setPeriodType(e.target.value as PeriodType)}
+                className="rounded-lg border px-3 py-2">
+
+                <option value="day" className="text-black">
+                  {timesPerPeriod === 1 ? "day" : "days"}
+                </option>
+                <option value="week" className="text-black">
+                  {timesPerPeriod === 1 ? "week" : "weeks"}
+                </option>
+                <option value="month" className="text-black">
+                  {timesPerPeriod === 1 ? "month" : "months"}
+                </option>
               </select>
             </div>
 
             <p className="mt-2 text-sm text-neutral-400">
-            Current rule: every {timesPerPeriod}{" "}
-            {periodType === "day"
-              ? timesPerPeriod === 1
-                ? "day"
-                : "days"
-              : timesPerPeriod === 1
-                ? "week"
-                : "weeks"}
+              Current rule: every {timesPerPeriod}{" "}
+              {periodType === "day"
+                ? timesPerPeriod === 1
+                  ? "day"
+                  : "days"
+                : timesPerPeriod === 1
+                  ? "week"
+                  : "weeks"}
             </p>
           </div>
-
 
           {/*Habit color (for calendar)
           TO-DO
