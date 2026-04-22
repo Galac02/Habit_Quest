@@ -2,6 +2,8 @@
 import { StreakBadge } from "./streak-badge";
 import { useState } from "react";
 import { Check } from "lucide-react";
+import { date } from "zod";
+import { isToday } from "@/lib/dates";
 
 interface HabitCardProps {
   id: string;
@@ -18,6 +20,8 @@ export function HabitCard({
 }) {
   const [completingId, setCompletingId] = useState<string | null>(null);
   const [habits, setHabits] = useState(initialHabits);
+
+  console.log();
 
   async function handleMarkDone(habitId: string) {
     setCompletingId(habitId);

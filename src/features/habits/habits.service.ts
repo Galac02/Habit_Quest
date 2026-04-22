@@ -25,7 +25,7 @@ export class HabitsService {
 
     await db.insert(habitRules).values({
       habitId: habit.id,
-      ruleType: input.rule.ruleType,
+      //ruleType: input.rule.ruleType,
       intervalValue: input.rule.intervalValue,
       weekdays: input.rule.weekdays,
       timesPerPeriod: input.rule.timesPerPeriod,
