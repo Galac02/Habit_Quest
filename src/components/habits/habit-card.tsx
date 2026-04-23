@@ -21,8 +21,6 @@ export function HabitCard({
   const [completingId, setCompletingId] = useState<string | null>(null);
   const [habits, setHabits] = useState(initialHabits);
 
-  console.log();
-
   async function handleMarkDone(habitId: string) {
     setCompletingId(habitId);
 

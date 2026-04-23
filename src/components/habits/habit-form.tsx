@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-type PeriodType = "day" | "week";
+type PeriodType = "day" | "week" | "month";
 
 export function HabitForm() {
   const [title, setTitle] = useState("");
@@ -34,6 +34,7 @@ export function HabitForm() {
           timesPerPeriod,
           periodType,
           startDate: new Date().toISOString(),
+          endDate: new Date().toISOString(),
         },
       }),
     });
@@ -47,10 +48,15 @@ export function HabitForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="w-5xl space-y-4 rounded-2xl border p-4">
+    <form
+      onSubmit={handleSubmit}
+      className="w-5xl space-y-4 rounded-2xl border p-4"
+    >
       <div>
         {/* Habit title */}
-        <label className="mb-1 block font-stretch-100% font-bold">Habit title</label>
+        <label className="mb-1 block font-stretch-100% font-bold">
+          Habit title
+        </label>
         <input
           required
           value={title}
@@ -64,7 +70,9 @@ export function HabitForm() {
         {/* Habit difficulty */}
         <div className="grid gap-4 md:grid-cols-2">
           <div className="flex flex-col">
-            <label className="mb-1 block font-stretch-100% font-bold">Difficulty</label>
+            <label className="mb-1 block font-stretch-100% font-bold">
+              Difficulty
+            </label>
             <label className="cursor-pointer">
               <input
                 type="radio"
@@ -74,7 +82,8 @@ export function HabitForm() {
                 onChange={(e) => setDiff(Number(e.target.value))}
                 className="peer hidden"
               />
-              <div className="
+              <div
+                className="
                 flex h-16 items-center justify-center rounded-lg 
                 border border-white
                 text-white
@@ -85,7 +94,9 @@ export function HabitForm() {
                 peer-checked:border-white
                 peer-checked:ring-2
                 peer-checked:shadow-[0_0_10px_rgba(255,255,255,0.7)]"
-              > Easy
+              >
+                {" "}
+                Easy
               </div>
             </label>
 
@@ -98,7 +109,8 @@ export function HabitForm() {
                 onChange={(e) => setDiff(Number(e.target.value))}
                 className="peer hidden"
               />
-              <div className="
+              <div
+                className="
                 flex h-16 items-center justify-center rounded-lg
                 border border-white
                 text-white
@@ -109,7 +121,9 @@ export function HabitForm() {
                 peer-checked:border-white
                 peer-checked:ring-2
                 peer-checked:shadow-[0_0_10px_rgba(255,255,255,0.7)]"
-              > Medium
+              >
+                {" "}
+                Medium
               </div>
             </label>
 
@@ -122,7 +136,8 @@ export function HabitForm() {
                 onChange={(e) => setDiff(Number(e.target.value))}
                 className="peer hidden"
               />
-              <div className="
+              <div
+                className="
                 flex h-16 items-center justify-center rounded-lg
                 border border-white
                 text-white
@@ -133,7 +148,9 @@ export function HabitForm() {
                 peer-checked:border-white
                 peer-checked:ring-2
                 peer-checked:shadow-[0_0_10px_rgba(255,255,255,0.7)]"
-              > Hard
+              >
+                {" "}
+                Hard
               </div>
             </label>
           </div>
@@ -150,13 +167,14 @@ export function HabitForm() {
                 min={1}
                 value={timesPerPeriod}
                 onChange={(e) => setTimesPerPeriod(Number(e.target.value))}
-                className="w-24 rounded-lg border px-3 py-2" />
+                className="w-24 rounded-lg border px-3 py-2"
+              />
 
               <select
                 value={periodType}
                 onChange={(e) => setPeriodType(e.target.value as PeriodType)}
-                className="rounded-lg border px-3 py-2">
-
+                className="rounded-lg border px-3 py-2"
+              >
                 <option value="day" className="text-black">
                   {timesPerPeriod === 1 ? "day" : "days"}
                 </option>
@@ -171,13 +189,17 @@ export function HabitForm() {
 
             <p className="mt-2 text-sm text-neutral-400">
               Current rule: every {timesPerPeriod}{" "}
-              {periodType === "day"
+              {periodType === "month"
                 ? timesPerPeriod === 1
-                  ? "day"
-                  : "days"
-                : timesPerPeriod === 1
-                  ? "week"
-                  : "weeks"}
+                  ? "month"
+                  : "months"
+                : periodType === "day"
+                  ? timesPerPeriod === 1
+                    ? "day"
+                    : "days"
+                  : timesPerPeriod === 1
+                    ? "week"
+                    : "weeks"}
             </p>
           </div>
 
@@ -319,7 +341,9 @@ export function HabitForm() {
         </div>
 
         {/* Habit Description */}
-        <label className="mb-1 block font-stretch-100% font-bold">Description</label>
+        <label className="mb-1 block font-stretch-100% font-bold">
+          Description
+        </label>
         <textarea
           value={description}
           className="w-full rounded-lg border px-3 py-2"
@@ -329,7 +353,10 @@ export function HabitForm() {
       </div>
 
       {/* Submit */}
-      <button type="submit" className="rounded-lg border px-3 py-2 w-full cursor-pointer hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]">
+      <button
+        type="submit"
+        className="rounded-lg border px-3 py-2 w-full cursor-pointer hover:ring-2 hover:shadow-[0_0_10px_rgba(255,255,255,0.7)]"
+      >
         Save habit
       </button>
     </form>

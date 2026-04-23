@@ -13,6 +13,7 @@ export const createHabitSchema = z.object({
     timesPerPeriod: z.number().int().positive().default(1),
     periodType: z.enum(["day", "week", "month"]).default("day"),
     startDate: z.string(),
+    endDate: z.string(),
   }),
 });
 
