@@ -27,16 +27,12 @@ export class HabitsService {
 
     var endDateVar = new Date();
     if (input.rule.periodType == "day") {
-      console.log("Inside if"); // This gets printed fine
       endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod);
-      console.log("endDateValue in if:", endDateVar);
     } else if (input.rule.periodType == "week") {
       endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod * 7);
     } else if (input.rule.periodType == "month") {
       endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod * 30);
     }
-
-    console.log("endDateValue outside of if:", endDateVar);
 
     await db.insert(habitRules).values({
       habitId: habit.id,
