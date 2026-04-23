@@ -25,8 +25,7 @@ Unlike simple habit trackers, it focuses on:
   * title
   * description
   * difficulty level
-  * color
-  * icon (emoji-based)
+  * repetition
 
 * 💾 Persistent storage via Supabase (PostgreSQL)
 
@@ -56,6 +55,10 @@ Unlike simple habit trackers, it focuses on:
 
   * Increment per completion
   * Not yet handling misses or freezes
+ 
+* 🔁 Recurring habit rules
+  * Choose period type (day|week|month)
+  * Choose times per period (every x days/weeks/months)  
 
 ---
 
@@ -65,13 +68,6 @@ Unlike simple habit trackers, it focuses on:
 
   * Show habits due today
   * Show completed habits
-
-* 🔁 Recurring habit rules
-
-  * daily
-  * every X days
-  * weekly
-  * fully custom schedules
 
 * 🎯 Calendar view
 
@@ -158,7 +154,7 @@ That means:
 
 ## 🤝 Contributing
 
-This is currently a personal project, but contributions, ideas, and feedback are always welcome.
+This is currently a personal project, but ideas, and feedback are always welcome.
 
 ---
 
@@ -173,5 +169,5 @@ To build a habit tracker that is:
 
 ---
 
-*Built with focus, curiosity, and a lot of debugging 😄*
+*Built with focus, curiosity, as little AI help as possible and a lot of debugging 😄*
 
