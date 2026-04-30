@@ -1,12 +1,26 @@
-export function dayPassed(lastCheck: Date): boolean {
-  const now = new Date();
+export function estimateEndDate(
+  periodType: string,
+  timesPerPeriod: number,
+): Date {
+  var endDateVar = new Date();
 
-  // 24 hours in milliseconds
-  const twentyFourHoursInMs = 24 * 60 * 60 * 1000;
-  // Calculate difference
-  const diffInMs = now.getTime() - lastCheck.getTime();
+  switch (periodType) {
+    case "day": {
+      endDateVar.setDate(endDateVar.getDate() + timesPerPeriod);
+      break;
+    }
+    case "week": {
+      endDateVar.setDate(endDateVar.getDate() + timesPerPeriod);
+      break;
+    }
+    case "month": {
+      endDateVar.setDate(endDateVar.getDate() + timesPerPeriod);
+      break;
+    }
+    default: {
+      alert("Something went wrong with endDateVar...");
+    }
+  }
 
-  return diffInMs > twentyFourHoursInMs;
+  return endDateVar;
 }
-
-export const oneDay = 24 * 60 * 60 * 1000;

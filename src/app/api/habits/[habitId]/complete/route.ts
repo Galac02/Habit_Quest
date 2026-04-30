@@ -13,6 +13,7 @@ export async function POST(
     .update(habits)
     .set({
       isActive: false,
+      updatedAt: new Date(Date.now()),
     })
     .where(eq(habits.id, habitId))
     .returning();

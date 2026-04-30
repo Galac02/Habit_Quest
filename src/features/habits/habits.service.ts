@@ -1,8 +1,7 @@
 import { db } from "@/db";
 import { habits, habitRules } from "@/db/schema/habits";
 import { CreateHabitInput } from "./habits.validation";
-import { dayPassed } from "@/components/habits/habit-functions";
-import { oneDay } from "@/components/habits/habit-functions";
+import { estimateEndDate } from "@/components/habits/habit-functions";
 
 export class HabitsService {
   /*   static async listByUser(userId: string) {
@@ -25,15 +24,6 @@ export class HabitsService {
       })
       .returning();
 
-    var endDateVar = new Date();
-    if (input.rule.periodType == "day") {
-      endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod);
-    } else if (input.rule.periodType == "week") {
-      endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod * 7);
-    } else if (input.rule.periodType == "month") {
-      endDateVar.setDate(endDateVar.getDate() + input.rule.timesPerPeriod * 30);
-    }
-
     await db.insert(habitRules).values({
       habitId: habit.id,
       //ruleType: input.rule.ruleType,
@@ -42,7 +32,10 @@ export class HabitsService {
       timesPerPeriod: input.rule.timesPerPeriod,
       periodType: input.rule.periodType,
       startDate: new Date(input.rule.startDate),
-      endDate: endDateVar,
+      endDate: estimateEndDate(
+        input.rule.periodType,
+        input.rule.timesPerPeriod,
+      ),
     });
 
     return habit;
